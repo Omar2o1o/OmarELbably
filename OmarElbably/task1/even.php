@@ -1,23 +1,19 @@
 <?php
 $number = "";
 if ($_POST) {
-    $firstNumber = $_POST["FirstNumber"];
+    $inputNumber = $_POST["inputNumber"];
 
-    if ($firstNumber > 0 && $firstNumber % 2 == 0) {
+    if ($inputNumber > 0 && $inputNumber % 2 == 0) {
         $number =
             "<div class='alert alert-success'>
-        <strong> The Number </strong> $firstNumber is even 
+        <strong> The Number </strong> $inputNumber is even 
         </div>";
-    } elseif ($firstNumber > 0 && $firstNumber % 2 !== 0) {
+    } elseif ($inputNumber > 0 && $inputNumber % 2 !== 0) {
         $number =
             "<div class='alert alert-success'>
-        <strong> The Number </strong> $firstNumber is odd 
+        <strong> The Number </strong> $inputNumber is odd 
         </div>";
-    } else {
-        $number = "<div class='alert alert-danger'>
-                        enter a number
-                    </div>";
-    }
+    } 
 }
 ?>
 <!doctype html>
@@ -42,10 +38,10 @@ if ($_POST) {
             <div class="col-4 offset-4 mt-5">
                 <form method="post">
                     <div class="form-group">
-                        <label for="FirstNumber">Enter a Number</label>
-                        <input type="number" name="FirstNumber" class="form-control">
+                        <label for="inputNumber">Enter a Number</label>
+                        <input type="number" name="inputNumber" class="form-control">
                     </div>
-                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
+                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Check </button>
                 </form>
                 <?php
                 echo $number ?? "";

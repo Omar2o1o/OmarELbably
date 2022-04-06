@@ -9,84 +9,30 @@ if ($_POST) {
     $totalMarks =  $Physics + $Chemistry + $Biology + $Mathematics + $Computer;
     $percentage =  $totalMarks / 2.5;
     if ($percentage >= 90) {
-        $marks =
-            "<div class='alert alert-success'>
-    <strong> Your Marks </strong> are $totalMarks 
-    </div>";
-        $message =
-            "<div class='alert alert-success'>
-        <strong> Your Percentage </strong> is $percentage% 
-        </div>";
-        $grade =
-            "<div class='alert alert-success'>
-        <strong> Your Grade </strong> is A 
-        </div>";
+        $gradeValue = "A";
     } elseif ($percentage >= 80) {
-        $marks =
-            "<div class='alert alert-success'>
-    <strong> Your Marks </strong> are $totalMarks 
-    </div>";
-        $message =
-            "<div class='alert alert-success'>
-        <strong> Your Percentage </strong> is $percentage% 
-        </div>";
-        $grade =
-            "<div class='alert alert-success'>
-        <strong> Your Grade </strong> is B 
-        </div>";
+        $gradeValue = "B";
     } elseif ($percentage >= 70) {
-        $marks =
-            "<div class='alert alert-success'>
-    <strong> Your Marks </strong> are $totalMarks 
-    </div>";
-        $message =
-            "<div class='alert alert-success'>
-        <strong> Your Percentage </strong> is $percentage% 
-        </div>";
-        $grade =
-            "<div class='alert alert-success'>
-        <strong> Your Grade </strong> is C 
-        </div>";
+        $gradeValue = "C";
     } elseif ($percentage >= 60) {
-        $marks =
-            "<div class='alert alert-success'>
-        <strong> Your Marks </strong> are $totalMarks 
-        </div>";
-        $message =
-            "<div class='alert alert-success'>
-        <strong> Your Percentage </strong> is $percentage% 
-        </div>";
-        $grade =
-            "<div class='alert alert-success'>
-        <strong> Your Grade </strong> is D 
-        </div>";
+        $gradeValue = "D";
     } elseif ($percentage >= 40) {
-        $marks =
-            "<div class='alert alert-success'>
-    <strong> Your Marks </strong> are $totalMarks 
-    </div>";
-        $message =
-            "<div class='alert alert-success'>
-        <strong> Your Percentage </strong> is $percentage% 
-        </div>";
-        $grade =
-            "<div class='alert alert-success'>
-        <strong> Your Grade </strong> is E 
-        </div>";
+        $gradeValue = "E";
     } elseif ($percentage < 40) {
-        $marks =
-            "<div class='alert alert-success'>
-<strong> Your Marks </strong> are    $totalMarks 
-</div>";
-        $message =
-            "<div class='alert alert-success'>
-        <strong> Your Percentage </strong> is $percentage% 
-        </div>";
-        $grade =
-            "<div class='alert alert-success'>
-        <strong> Your Grade </strong> is F 
-        </div>";
+        $gradeValue = "F";
     }
+    $marks =
+        "<div class='alert alert-success'>
+<strong> Your Marks </strong> are $totalMarks 
+</div>";
+    $message =
+        "<div class='alert alert-success'>
+<strong> Your Percentage </strong> is $percentage% 
+</div>";
+    $grade =
+        "<div class='alert alert-success'>
+<strong> Your Grade </strong> is $gradeValue 
+</div>";
 }
 ?>
 <!doctype html>
@@ -116,22 +62,22 @@ if ($_POST) {
                     </div>
                     <div class="form-group">
                         <label for="Chemistry">Chemistry</label>
-                        <input type="number" name="Chemistry" class="form-control" min="0" max="50">
+                        <input type="number" name="Chemistry" class="form-control" min="0" max="50" required>
                     </div>
                     <div class="form-group">
                         <label for="Biology">Biology</label>
-                        <input type="number" name="Biology" class="form-control" min="0" max="50">
+                        <input type="number" name="Biology" class="form-control" min="0" max="50" required>
                     </div>
                     <div class="form-group">
                         <label for="Mathematics">Mathematics</label>
-                        <input type="number" name="Mathematics" class="form-control" min="0" max="50">
+                        <input type="number" name="Mathematics" class="form-control" min="0" max="50" required>
                     </div>
                     <div class="form-group">
                         <label for="Computer">Computer</label>
-                        <input type="number" name="Computer" class="form-control" min="0" max="50">
+                        <input type="number" name="Computer" class="form-control" min="0" max="50" required>
                     </div>
 
-                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
+                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> My Marks </button>
                 </form>
                 <?php
                 echo $marks ?? "";

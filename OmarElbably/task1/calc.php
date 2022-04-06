@@ -74,7 +74,7 @@ if ($_POST) {
                         <input type="number" name="SecondNumber" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="Operator">Choose operator</label>
+                        <label for="Operator">Choose an operator</label>
                         <select name="Operator" id="">
                             <option value=""></option>
                             <option value="/">/</option>

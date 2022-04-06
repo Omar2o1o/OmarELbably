@@ -1,46 +1,32 @@
 <?php
-$chargePrice = "";
+
 if ($_POST) {
-    $chargeCount = $_POST["FirstNumber"];
+    $consumption = $_POST["inputNumber"];
     $surcharge = 0.2;
+    $Vat = $surcharge * 100;
 
-    if ($chargeCount <= 50 && $chargeCount > 0) {
-        $unitPrice = $chargeCount * 0.5;
-        $surchargePrice = $unitPrice * $surcharge;
-        $priceAfterCharge = $unitPrice + $surchargePrice;
-
-        $chargePrice =
-            "<div class='alert alert-success'>
-        <strong> Your bill </strong> is $priceAfterCharge EGP 
-        </div>";
-    } elseif ($chargeCount <= 150 && $chargeCount > 50) {
-        $unitPrice = $chargeCount * 0.75;
-        $surchargePrice = $unitPrice * $surcharge;
-        $priceAfterCharge = $unitPrice + $surchargePrice;
-
-        $chargePrice =
-            "<div class='alert alert-success'>
-        <strong> Your bill </strong> is $priceAfterCharge EGP 
-        </div>";
-    } elseif ($chargeCount <= 250 && $chargeCount > 150) {
-        $unitPrice = $chargeCount * 1.2;
-        $surchargePrice = $unitPrice * $surcharge;
-        $priceAfterCharge = $unitPrice + $surchargePrice;
-
-        $chargePrice =
-            "<div class='alert alert-success'>
-        <strong> Your bill </strong> is $priceAfterCharge EGP 
-        </div>";
-    } elseif ($chargeCount >= 250) {
-        $unitPrice = $chargeCount * 1.5;
-        $surchargePrice = $unitPrice * $surcharge;
-        $priceAfterCharge = $unitPrice + $surchargePrice;
-
-        $chargePrice =
-            "<div class='alert alert-success'>
-        <strong> Your bill </strong> is $priceAfterCharge EGP 
-        </div>";
+    if ($consumption <= 50 && $consumption > 0) {
+        $units = 0.5;
+    } elseif ($consumption <= 150 && $consumption > 50) {
+        $units = 0.75;
+    } elseif ($consumption <= 250 && $consumption > 150) {
+        $units = 1.2;
+    } elseif ($consumption >= 250) {
+        $units = 1.5;
     }
+    $unitPrice = $consumption * $units;
+    $surchargePrice = $unitPrice * $surcharge;
+    $priceAfterVat = $unitPrice + $surchargePrice;
+    $chargePrice =
+        "<div class='alert alert-success'>
+        <strong> Units Cost: </strong>  $units EGP <br>
+        <strong> Your Consumption: </strong> is $consumption Unit <br>
+        <strong> Your Consumption Value: </strong>  $unitPrice EGP <br>   
+       
+        <strong> Vat: </strong> $Vat% <br>
+        <strong> Price After Vat: </strong> is $priceAfterVat EGP <br>
+        </div>
+        ";
 }
 ?>
 <!doctype html>
@@ -65,11 +51,11 @@ if ($_POST) {
             <div class="col-4 offset-4 mt-5">
                 <form method="post">
                     <div class="form-group">
-                        <label for="FirstNumber">First Number</label>
-                        <input type="number" name="FirstNumber" class="form-control">
+                        <label for="inputNumber">Enter Your Consumption</label>
+                        <input type="number" name="inputNumber" class="form-control" required>
                     </div>
 
-                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
+                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Invoice </button>
                 </form>
                 <?php
                 echo $chargePrice ?? "";

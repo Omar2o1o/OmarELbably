@@ -3,39 +3,30 @@ if ($_POST) {
     $x = $_POST["FirstNumber"];
     $y = $_POST["SecondNumber"];
     $z = $_POST["ThirdNumber"];
-
+    $maxValue = "";
+    $minValue = "";
     if ($x > $y && $x > $z) {
-        $MaxNumber =
-            "<div class='alert alert-success'>
-            <strong> Max Number </strong> is $x 
-            </div>";
+        $maxValue = $x;
     } elseif ($y > $x && $y > $z) {
-        $MaxNumber =
-            "<div class='alert alert-success'>
-        <strong> Max Number </strong> is $y 
-        </div>";
+        $maxValue = $y;
     } elseif ($z > $x && $z > $y) {
-        $MaxNumber =
-            "<div class='alert alert-success'>
-        <strong> Max Number </strong> is $z 
-        </div>";
+        $maxValue = $z;
     }
     if ($x < $y && $x < $z) {
-        $MinNumber =
-            "<div class='alert alert-success'>
-            <strong> Min Number </strong> is $x 
-            </div>";
+        $minValue = $x;
     } elseif ($y < $x && $y < $z) {
-        $MinNumber =
-            "<div class='alert alert-success'>
-        <strong> Min Number </strong> is $y 
-        </div>";
+        $minValue = $y;
     } elseif ($z < $x && $z < $y) {
-        $MinNumber =
-            "<div class='alert alert-success'>
-        <strong> Min Number </strong> is $z 
-        </div>";
+        $minValue = $z;
     }
+    $maxNumber =
+        "<div class='alert alert-success'>
+<strong> Max Number </strong> is $maxValue 
+</div>";
+    $minNumber =
+        "<div class='alert alert-success'>
+<strong> Min Number </strong> is $minValue 
+</div>";
 }
 ?>
 <!doctype html>
@@ -61,21 +52,21 @@ if ($_POST) {
                 <form method="post">
                     <div class="form-group">
                         <label for="FirstNumber">First Number</label>
-                        <input type="number" name="FirstNumber" class="form-control">
+                        <input type="number" name="FirstNumber" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="SecondNumber">Second Number</label>
-                        <input type="number" name="SecondNumber" class="form-control">
+                        <input type="number" name="SecondNumber" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="ThirdNumber">Third Number</label>
-                        <input type="number" name="ThirdNumber" class="form-control">
+                        <input type="number" name="ThirdNumber" class="form-control" required>
                     </div>
                     <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
                 </form>
                 <?php
-                echo $MaxNumber ?? "";
-                echo $MinNumber ?? "";
+                echo $maxNumber ?? "";
+                echo $minNumber ?? "";
                 ?>
             </div>
         </div>

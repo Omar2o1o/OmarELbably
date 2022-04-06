@@ -2,11 +2,13 @@
 
 if ($_POST) {
 
-    $x = $_POST["FirstNumber"];
-    $x1 = $x ** (1 / 2);
+    $inputNumber = $_POST["inputNumber"];
+    $root = $_POST["Root"];
+    $result = $inputNumber * 1 / $root;
+
     $number =
         "<div class='alert alert-success'>
-        <strong> The Root of </strong> $x is $x1 
+        <strong> The Root of </strong> $inputNumber is $result 
             </div>";
 }
 ?>
@@ -14,7 +16,7 @@ if ($_POST) {
 <html lang="en">
 
 <head>
-    <title>root</title>
+    <title>Root</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,13 +29,17 @@ if ($_POST) {
     <div class="container">
         <div class="row mt-5">
             <div class="col-12 text-center text-dark">
-                <h4>root number</h4>
+                <h4>Root number</h4>
             </div>
             <div class="col-4 offset-4 mt-5">
                 <form method="post">
                     <div class="form-group">
-                        <label for="FirstNumber">Enter a Number</label>
-                        <input type="number" name="FirstNumber" class="form-control" required>
+                        <label for="inputNumber">Enter a Number</label>
+                        <input type="number" name="inputNumber" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Root">Root</label>
+                        <input type="number" name="Root" class="form-control">
                     </div>
                     <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
                 </form>

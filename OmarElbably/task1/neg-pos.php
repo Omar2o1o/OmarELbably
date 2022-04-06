@@ -1,8 +1,8 @@
 <?php
-$number = "";
+
 if ($_POST) {
 
-    $x = $_POST["FirstNumber"];
+    $x = $_POST["inputNumber"];
     if ($x >= 0) {
         $number =
             "<div class='alert alert-success'>
@@ -42,10 +42,10 @@ if ($_POST) {
             <div class="col-4 offset-4 mt-5">
                 <form method="post">
                     <div class="form-group">
-                        <label for="FirstNumber">Enter a Number</label>
-                        <input type="number" name="FirstNumber" class="form-control" required>
+                        <label for="inputNumber">Enter a Number</label>
+                        <input type="number" name="inputNumber" class="form-control" required>
                     </div>
-                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
+                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Check </button>
                 </form>
                 <?php
                 echo $number ?? "";
