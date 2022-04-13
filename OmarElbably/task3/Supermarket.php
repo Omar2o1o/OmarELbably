@@ -2,49 +2,41 @@
 
 if ($_POST) {
     $username = $_POST["username"];
-    $loanAmount = $_POST["loanAmount"];
-    $loanYears = $_POST["loanYears"];
+    $city = $_POST["city"];
+    $numberofvarieties = $_POST["numberofvarieties"];
 
 
-    if ($loanYears < 3) {
-        $interest = 0.1;
-    } else {
-        $interest = 0.15;
-    }
-    $interestRatio = $interest * $loanAmount;
-    // $interestRate = $interestRatio * $loanYears;
-    $loanAfterinterest = $loanAmount + $interestRatio;
-    $monthly = $loanYears * 12;
-    $monthlyrate = $loanAfterinterest / $monthly;
-    $totalLoan =
-        "
-        <table class='table table-bordered align-middle table-primary'>
-        <head>
-            <th>User Name</th>
-            <th>Interest Rate</th>
-            <th>Loan after interest</th>
-            <th>Monthly</th>
-        </head>
-        <tbody>
-            <tr class='table-secondary' >
-                <td class='align-middle'>$username</td>
-                <td class='align-middle'>$interestRatio</td>
-                <td class='align-middle'>$loanAfterinterest</td>
-                <td class='align-middle'>$monthlyrate</td>
-            </tr>
-        </tbody>
-    </table>
-    ";
+    $input = " <table>
+  <head>
+      <th>Product name</th>
+      <th>Price</th>
+      <th>Quantities</th>
+</head>
+<tbody>
+    <?php foreach($numberofvarieties){ ?>
+    <tr>
+    <td><input type='text' name='productName' class='form-control' required></td>
+    <td><input type='number' name='price' class='form-control' required></td>
+    <td><input type='number' name='quantities' class='form-control' required></td>
+    </tr>
+    <?php  } ?>
+</tbody>
+</table>
+<button class='btn btn-outline-dark rounded btn-sm mb-5'> Receipt </button>";
 }
-
-
-
 ?>
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Bank</title>
+    <title>Supermarket</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,32 +49,44 @@ if ($_POST) {
     <div class="container">
         <div class="row mt-5">
             <div class="col-12 text-center text-dark">
-                <h1 style="color: blue">Bank Loan</h1>
+                <h1 style="color: red">Supermarket</h1>
             </div>
             <div class="col-6 offset-3 mt-5">
                 <form method="post">
                     <div class="form-group">
-                        <label for="username<">User Name</label>
+                        <label for="username<">
+                            <h4>Username</h4>
+                        </label>
                         <input type="text" name="username" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="loanAmount<">Loan Amount</label>
-                        <input type="number" name="loanAmount" class="form-control" required>
+                        <label for="city<">
+                            <h4>City</h4>
+                        </label>
+                        <select name="city" id="">
+                            <option value="cairo">Cairo</option>
+                            <option value="giza">Giza</option>
+                            <option value="alex">Alex</option>
+                            <option value="others">Others</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="loanYears">Loan Years</label>
-                        <input type="number" name="loanYears" class="form-control" required>
+                        <label for="numberofvarieties">
+                            <h4>Number of varieties</h4>
+                        </label>
+                        <input type="number" name="numberofvarieties" class="form-control" required>
                     </div>
 
-                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Calculate </button>
+                    <button class="btn btn-outline-dark rounded btn-sm mb-5"> Enter products </button>
+
+                    <?php
+                    echo $input ?? "";
+                    ?>
                 </form>
-                <?php
-                echo $totalLoan ?? "";
-                ?>
+
             </div>
         </div>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
